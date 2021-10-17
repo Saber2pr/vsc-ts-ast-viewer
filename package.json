@@ -1,0 +1,70 @@
+{
+	"name": "ts-ast-viewer",
+	"displayName": "Ts Ast Viewer",
+	"description": "ts ast viewer for vscode.",
+	"publisher": "saber2pr",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.56.0"
+	},
+	"categories": [
+		"Visualization"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Saber2pr/vsc-ts-ast-viewer.git"
+	},
+	"icon": "assets/logo.png",
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "ts-ast-viewer",
+					"title": "Ts Ast Viewer",
+					"icon": "assets/logo.png"
+				}
+			]
+		},
+		"views": {
+			"ts-ast-viewer": [
+				{
+					"id": "ts-ast-viewer",
+					"name": "Ts Ast Viewer",
+					"icon": "assets/logo.png",
+					"when": "no-tslib == false"
+				},
+				{
+					"id": "welcome",
+					"name": "Ts Ast Viewer",
+					"icon": "assets/logo.png",
+					"when": "no-tslib == true"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "ts-ast-viewer",
+				"contents": "Please open a file to parse."
+			},
+			{
+				"view": "welcome",
+				"contents": "try run `npm install -D typescript` and reload to enable."
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"build": "vsce package"
+	},
+	"devDependencies": {
+		"@types/node": "^12.11.7",
+		"typescript": "^4.4.4",
+		"@types/vscode": "^1.56.0"
+	}
+}
