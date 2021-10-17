@@ -11,3 +11,4 @@
 ## More
 
 1. Feedback and opensource on github [vsc-ts-ast-viewer](https://github.com/Saber2pr/vsc-ts-ast-viewer)
+2. Inspired by [dsherret/ts-ast-viewer](https://github.com/dsherret/ts-ast-viewer)
