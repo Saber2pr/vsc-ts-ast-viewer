@@ -15,14 +15,13 @@ export function activate(context: vscode.ExtensionContext) {
     treeDataProvider: Provider,
   })
 
-  vscode.window.onDidChangeActiveTextEditor(Provider.changeEditor)
-
   context.subscriptions.push(
     TreeView,
     vscode.commands.registerCommand(
       COM_AST_VIEWER_FOCUS,
       TsAstViewerProvider.focusAstNodeRange
-    )
+    ),
+    vscode.window.onDidChangeActiveTextEditor(Provider.changeEditor)
   )
 }
 
