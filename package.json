@@ -3,7 +3,7 @@
 	"displayName": "Typescript Ast Viewer",
 	"description": "View Ast in SideMenu TreeView.",
 	"publisher": "saber2pr",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"engines": {
 		"vscode": "^1.56.0"
 	},
