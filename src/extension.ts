@@ -21,7 +21,8 @@ export function activate(context: vscode.ExtensionContext) {
       COM_AST_VIEWER_FOCUS,
       TsAstViewerProvider.focusAstNodeRange
     ),
-    vscode.window.onDidChangeActiveTextEditor(Provider.changeEditor)
+    vscode.window.onDidChangeActiveTextEditor(Provider.changeEditor),
+    vscode.workspace.onDidChangeTextDocument(Provider.update)
   )
 }
 

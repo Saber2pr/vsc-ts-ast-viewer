@@ -74,6 +74,10 @@ export class TsAstViewerProvider
 
   changeEditor = (textEditor?: vscode.TextEditor) => {
     this.textEditor = textEditor
+    this.update()
+  }
+
+  update = () => {
     this._onDidChangeTreeData.fire()
   }
 }
