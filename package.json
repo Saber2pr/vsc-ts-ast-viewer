@@ -16,7 +16,7 @@
 	},
 	"icon": "assets/logo.png",
 	"activationEvents": [
-		"*"
+		"onView:ts-ast-viewer"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
