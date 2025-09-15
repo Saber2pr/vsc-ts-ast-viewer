@@ -1,0 +1,42 @@
+name: Publish to Open VSX Registry
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.18.1'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: |
+          yarn install
+
+      - name: Build extension
+        run: |
+          NODE_OPTIONS="--openssl-legacy-provider" yarn compile
+        env:
+          NODE_OPTIONS: '--openssl-legacy-provider'
+
+      - name: Install vsce
+        run: npm install -g @vscode/vsce
+
+      - name: Package extension
+        run: vsce package --no-dependencies
+
+      - name: Publish to Open VSX Registry
+        uses: HaaLeo/publish-vscode-extension@v1
+        with:
+          pat: ${{ secrets.OPEN_VSX_TOKEN }}
+          registryUrl: https://open-vsx.org
